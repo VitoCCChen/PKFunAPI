@@ -14,6 +14,3 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/getEpisode', 'EpisodeController@getEpisode');
-
-Route::get('/getProgram', 'ProgramController@getProgram');
