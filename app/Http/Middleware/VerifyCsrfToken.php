@@ -13,5 +13,10 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
+        'api/login',
+        'api/login/facebook',
+        'api/register',
+        'api/contribute',
+        'api/mycard/GetAuthCode'
     ];
 }
