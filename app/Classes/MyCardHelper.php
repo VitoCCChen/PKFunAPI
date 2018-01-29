@@ -17,21 +17,18 @@ class MyCardHelper {
     public function AddMycard($ary){
         extract($ary);
         $mycard_data = array(
-            'FacTradeSeq' => $FacTradeSeq,
-            'TradeSeq' => $TradeSeq,
-            'ServerId' => $ServerId,
-            'member_id' => $member_id,
-            'PaymentType' => $PaymentType,
-            'ItemCode' => $ItemCode,
-            'product_id' => $product_id,
-            'Amount' => $Amount,
-            'Currency' => $Currency,
-            'Created_date' => $Created_date,
-            'agent_id' => $agent_id,
-            'AuthCode' => $AuthCode,
-            'ReturnCode' => $ReturnCode
+            $FacTradeSeq,
+            $TradeSeq,
+            $member_id,
+            $product_id,
+            $Amount,
+            $Currency,
+            $Created_date,
+            $agent_id,
+            $AuthCode,
+            $ReturnCode
         );
-        DB::insert('INSERT INTO mycard (FacTradeSeq, TradeSeq, ServerId, member_id, PaymentType, ItemCode, product_id, Amount, Currency, Created_date, agent_id, AuthCode, ReturnCode) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)',$mycard_data);
+        DB::insert('INSERT INTO mycard (FacTradeSeq, TradeSeq, member_id, product_id, Amount, Currency, Created_date, agent_id, AuthCode, ReturnCode) VALUES (?,?,?,?,?,?,?,?,?,?)',$mycard_data);
 
     }
 
@@ -131,7 +128,6 @@ class MyCardHelper {
     function getAuthCode($ary){
 
         extract($ary);
-
         $Encodedata = substr(urlencode($ProductName),strpos(urlencode($ProductName),"%"));
         $data = $FacServiceId.$FacTradeSeq.$TradeType.$ServerId.$CustomerId.$PaymentType.$ItemCode.$Encodedata.$Amount.$Currency.$SandBoxMode.$FacKey;
         $Hash = hash('sha256', $data);
@@ -151,11 +147,9 @@ class MyCardHelper {
 
 
         $opt=json_decode($output);
-        echo $data."<br>";
-        echo $Hash."<br>";
+
 
         $Result = $opt->ReturnCode;
-        echo $Result;
         if($Result!=1){
             return array(
                 'success' => false,
@@ -172,10 +166,7 @@ class MyCardHelper {
             $ary = array(
                 'FacTradeSeq' => $FacTradeSeq,
                 'TradeSeq' => $TradeSeq,
-                'ServerId' => $ServerId,
                 'member_id' => $CustomerId,
-                'PaymentType' => $PaymentType,
-                'ItemCode' => $ItemCode,
                 'product_id' => $ProductName,
                 'Amount' => $Amount,
                 'Currency' => $Currency,

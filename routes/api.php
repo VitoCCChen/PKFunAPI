@@ -54,7 +54,7 @@ Route::group(['middleware' => ['web']], function(){
 
     Route::post('/register', 'LoginController@register');
 
-    Route::post('/mycard/GetAuthCode', 'MyCardController@getAuthCode');
+    Route::post('/mycard/getAuthCode', 'MyCardController@getAuthCode');
 
 
 });

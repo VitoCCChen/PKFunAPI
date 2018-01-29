@@ -44,6 +44,8 @@ class MyCardController extends Controller
                     'message' => 'Failed to get agent id .'
                 ));
             }
+        }else{
+            $agent_id = null;
         }
         $getauth_ary = array(
             'FacServiceId' => 'luckySG',
@@ -56,7 +58,7 @@ class MyCardController extends Controller
             'ProductName' => $productName,
             'Amount' => $amount,
             'Currency' => $currency,
-            'SandBoxMode' => true,
+            'SandBoxMode' => 'true',
             'FacKey' => "B8sqJqY3QFQg8wE2LZ4AxcWQ69v3RUyy",
             'Created_date' => date('Y-m-d H:i:s',time()),
             'agent_id' => $agent_id
