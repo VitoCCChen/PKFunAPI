@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-01-29 10:07:21
--- 伺服器版本: 10.1.28-MariaDB
--- PHP 版本： 7.1.11
+-- 產生時間： 2018-01-30 11:22:13
+-- 伺服器版本: 10.1.29-MariaDB
+-- PHP 版本： 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -3153,7 +3153,7 @@ CREATE TABLE `program` (
   `pgram_name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `pgram_description` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `pgram_thumbnail` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `pgram_url` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `pgram_url` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `pgram_tag` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `pgram_createdtime` datetime NOT NULL,
   `pgram_updatetime` datetime NOT NULL,
@@ -3166,8 +3166,9 @@ CREATE TABLE `program` (
 --
 
 INSERT INTO `program` (`pgram_id`, `pgram_name`, `pgram_description`, `pgram_thumbnail`, `pgram_url`, `pgram_tag`, `pgram_createdtime`, `pgram_updatetime`, `pgram_showtime`, `pgram_lastmanager`) VALUES
-(1, 'fun開玩', '一個清新、優質的節目，主要以開箱及玩遊戲為主', '17640b33f7e6248b9b2967bc2b3160b7.png', 'https://www.youtube.com/watch?v=Jv3zvWZlXkk', '8,9,10,13', '2017-12-27 01:09:13', '2018-01-10 18:14:23', '每周一 19:00am~20:00am', 'admin'),
-(14, '美眉看MTV', '由現今才女介紹hitoMV', '.png', 'https://www.w3schools.com/php/php_file_upload.asp', '1,2,3,4,5,6,7,8,9,10,12,13', '2017-12-29 17:54:11', '2018-01-11 18:44:43', '24hr 不間斷', 'admin');
+(1, 'fun開玩', '一個清新、優質的節目，主要以開箱及玩遊戲為主', '1.jpg', 'https://www.facebook.com/facebook/videos/965313099422/', '8,9', '2017-12-27 01:09:13', '2018-01-11 18:41:50', '每周一 19:00am~20:00am', 'admin'),
+(14, '美眉看MTV', '由現今才女介紹hitoMV', '14.jpg', 'https://www.facebook.com/facebook/videos/1173655739432385/', '1,2,3,4,5,6,7,8,9,10,12,13', '2017-12-29 17:54:11', '2018-01-11 18:41:58', '24hr 不間斷', 'admin'),
+(15, '[V]音樂普普風', '24小時流行音樂不間斷', '15.jpg', 'https://www.facebook.com/facebook/videos/10156809736156729/', '3,4,5', '2018-01-12 09:51:43', '2018-01-12 16:24:33', '隨時都在你身邊', 'admin');
 
 -- --------------------------------------------------------
 
@@ -3219,10 +3220,22 @@ CREATE TABLE `program_episode` (
 --
 
 INSERT INTO `program_episode` (`ep_id`, `ep_pgram_id`, `ep_anchors`, `ep_start_time`, `ep_end_time`, `ep_createtime`, `ep_updatetime`, `ep_lastmanage`) VALUES
-(1, 1, '1', '2017-12-31 16:00:00', '2018-01-07 19:16:13', '2018-01-08 03:37:48', '2018-01-08 03:37:48', 'admin'),
-(2, 14, '2', '2018-01-01 20:13:13', '2018-01-01 22:18:16', '2018-01-08 03:37:48', '2018-01-08 03:37:48', 'admin'),
-(3, 1, '2,3', '2018-01-03 02:28:10', '2018-01-03 04:29:12', '2018-01-08 03:40:42', '2018-01-08 03:41:01', 'admin'),
-(4, 14, '3,2,1', '2018-01-04 22:15:10', '2018-01-08 02:22:33', '2018-01-08 03:40:30', '2018-01-10 02:16:53', 'admin');
+(1, 1, '2', '2017-12-31 16:00:00', '2018-01-07 19:16:13', '2018-01-08 03:37:48', '2018-01-15 04:29:46', 'admin'),
+(2, 14, '2', '2018-01-01 20:13:13', '2018-01-01 22:18:16', '2018-01-08 04:37:48', '2018-01-08 03:37:48', 'admin'),
+(3, 1, '2,3', '2018-01-03 02:28:10', '2018-01-03 04:29:12', '2018-01-16 03:40:42', '2018-01-08 03:41:01', 'admin'),
+(4, 14, '3,2,1', '2018-01-04 22:15:10', '2018-01-08 02:22:33', '2018-01-08 03:40:30', '2018-01-10 02:16:53', 'admin'),
+(24, 1, '2', '2018-01-03 02:28:10', '2018-01-03 02:28:10', '2018-01-15 05:47:40', '2018-01-15 03:51:50', 'admin'),
+(25, 15, '2', '2018-01-13 22:18:17', '2018-01-13 23:19:19', '2018-01-15 07:21:18', '2018-01-15 07:21:18', 'admin'),
+(26, 15, '2', '2018-01-13 22:18:17', '2018-01-13 23:19:19', '2018-01-15 08:21:18', '2018-01-15 07:21:18', 'admin'),
+(27, 15, '2', '2018-01-13 22:18:17', '2018-01-13 23:19:19', '2018-01-15 09:21:18', '2018-01-15 07:21:18', 'admin'),
+(28, 15, '2', '2018-01-13 22:18:17', '2018-01-13 23:19:19', '2018-01-15 10:21:18', '2018-01-15 07:21:18', 'admin'),
+(29, 1, '2', '2018-01-03 02:28:10', '2018-01-03 02:28:10', '2018-01-15 04:47:40', '2018-01-15 03:51:50', 'admin'),
+(30, 1, '2', '2018-01-03 02:28:10', '2018-01-03 02:28:10', '2018-01-15 03:47:40', '2018-01-15 03:51:50', 'admin'),
+(31, 14, '3,2,1', '2018-01-04 22:15:10', '2018-01-08 02:22:33', '2018-01-08 04:40:30', '2018-01-10 02:16:53', 'admin'),
+(32, 1, '2,3', '2018-01-03 02:28:10', '2018-01-03 04:29:12', '2018-01-16 04:40:42', '2018-01-08 03:41:01', 'admin'),
+(33, 1, '2,3', '2018-01-03 02:28:10', '2018-01-03 04:29:12', '2018-01-16 05:40:42', '2018-01-08 05:41:01', 'admin'),
+(34, 15, '2', '2018-01-13 22:18:17', '2018-01-13 23:19:19', '2018-01-15 11:21:18', '2018-01-15 07:21:18', 'admin'),
+(35, 15, '2', '2018-01-13 22:18:17', '2018-01-13 23:19:19', '2018-01-15 12:21:18', '2018-01-15 07:21:18', 'admin');
 
 -- --------------------------------------------------------
 
@@ -3637,7 +3650,7 @@ ALTER TABLE `product_log`
 -- 使用資料表 AUTO_INCREMENT `program`
 --
 ALTER TABLE `program`
-  MODIFY `pgram_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `pgram_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- 使用資料表 AUTO_INCREMENT `program_chatroom`
@@ -3649,7 +3662,7 @@ ALTER TABLE `program_chatroom`
 -- 使用資料表 AUTO_INCREMENT `program_episode`
 --
 ALTER TABLE `program_episode`
-  MODIFY `ep_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ep_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- 使用資料表 AUTO_INCREMENT `program_tags`
