@@ -1,11 +1,11 @@
-﻿-- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-01-29 10:07:21
--- 伺服器版本: 10.1.28-MariaDB
--- PHP 版本： 7.1.11
+-- 產生時間： 2018-01-30 11:22:13
+-- 伺服器版本: 10.1.29-MariaDB
+-- PHP 版本： 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -3153,7 +3153,7 @@ CREATE TABLE `program` (
   `pgram_name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `pgram_description` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `pgram_thumbnail` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `pgram_url` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `pgram_url` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `pgram_tag` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `pgram_createdtime` datetime NOT NULL,
   `pgram_updatetime` datetime NOT NULL,
@@ -3166,8 +3166,9 @@ CREATE TABLE `program` (
 --
 
 INSERT INTO `program` (`pgram_id`, `pgram_name`, `pgram_description`, `pgram_thumbnail`, `pgram_url`, `pgram_tag`, `pgram_createdtime`, `pgram_updatetime`, `pgram_showtime`, `pgram_lastmanager`) VALUES
-(1, 'fun開玩', '一個清新、優質的節目，主要以開箱及玩遊戲為主', '17640b33f7e6248b9b2967bc2b3160b7.png', 'https://www.youtube.com/watch?v=Jv3zvWZlXkk', '8,9,10,13', '2017-12-27 01:09:13', '2018-01-10 18:14:23', '每周一 19:00am~20:00am', 'admin'),
-(14, '美眉看MTV', '由現今才女介紹hitoMV', '.png', 'https://www.w3schools.com/php/php_file_upload.asp', '1,2,3,4,5,6,7,8,9,10,12,13', '2017-12-29 17:54:11', '2018-01-11 18:44:43', '24hr 不間斷', 'admin');
+(1, 'fun開玩', '一個清新、優質的節目，主要以開箱及玩遊戲為主', '1.jpg', 'https://www.facebook.com/facebook/videos/965313099422/', '8,9', '2017-12-27 01:09:13', '2018-01-11 18:41:50', '每周一 19:00am~20:00am', 'admin'),
+(14, '美眉看MTV', '由現今才女介紹hitoMV', '14.jpg', 'https://www.facebook.com/facebook/videos/1173655739432385/', '1,2,3,4,5,6,7,8,9,10,12,13', '2017-12-29 17:54:11', '2018-01-11 18:41:58', '24hr 不間斷', 'admin'),
+(15, '[V]音樂普普風', '24小時流行音樂不間斷', '15.jpg', 'https://www.facebook.com/facebook/videos/10156809736156729/', '3,4,5', '2018-01-12 09:51:43', '2018-01-12 16:24:33', '隨時都在你身邊', 'admin');
 
 -- --------------------------------------------------------
 

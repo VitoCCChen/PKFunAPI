@@ -30,7 +30,7 @@ class EpisodeController extends Controller
             $row['page'] = $page;
             $begin = $lim * ($page - 1);
 
-            $queryString = DB::table('program_episode')->select('ep_id', 'pgram_name', 'ep_anchors', 'ep_start_time', 'ep_end_time',
+            $queryString = DB::table('program_episode')->select('ep_id', 'pgram_name', 'pgram_id', 'pgram_description', 'pgram_thumbnail', 'ep_anchors', 'ep_start_time', 'ep_end_time',
                 DB::raw('SEC_TO_TIME( TIMESTAMPDIFF(SECOND, ep_start_time, ep_end_time) ) as episode_length'),
                 DB::raw('(SELECT COUNT(*) FROM program_chatroom WHERE cl_record_id=ep_id) as chat_count'),
                 'ep_updatetime', 'ep_lastmanage')
@@ -45,6 +45,45 @@ class EpisodeController extends Controller
             } else {
                 $row['data'] = $queryString->get();
             }
+
+            $anchors = DB::table('anchor')->select('id as value', 'name')->get()->toArray();
+
+            for ($i = 0; $i < count($row['data']); $i++) {
+                $ary_numbers = explode(",", $row['data'][$i]->ep_anchors);
+                $newary = array();
+                foreach ($ary_numbers as $val) {
+                    $tmpary = array();
+                    $key = array_search($val, array_column($anchors, 'value'));
+                    $tmpary['id'] = $val;
+                    $tmpary['name'] = $anchors[$key]->name;
+                    array_push($newary, $tmpary);
+                }
+                $row['data'][$i]->ep_anchors = $newary;
+            }
+
+            $result["result"] = $row;
+            return $result;
+        } catch (Exception $e) {
+            $result['success'] = "false";
+            $result['message'] = $e->getMessage();
+            return $result;
+        }
+    }
+
+    public function getOneEpisode($id)
+    {
+        $result = array(
+            'success' => "true",
+            'result' => '',
+            'message' => "request successful"
+        );
+        try {
+            $row['data'] = DB::table('program_episode')->select('ep_id', 'pgram_name', 'pgram_id', 'pgram_description', 'pgram_thumbnail', 'pgram_url', 'ep_anchors', 'ep_start_time', 'ep_end_time',
+                DB::raw('SEC_TO_TIME( TIMESTAMPDIFF(SECOND, ep_start_time, ep_end_time) ) as episode_length'),
+                DB::raw('(SELECT COUNT(*) FROM program_chatroom WHERE cl_record_id=ep_id) as chat_count'),
+                'ep_updatetime', 'ep_lastmanage')
+                ->leftjoin('program', 'ep_pgram_id', '=', 'pgram_id')
+                ->where('ep_id', $id)->get();
 
             $anchors = DB::table('anchor')->select('id as value', 'name')->get()->toArray();
 
