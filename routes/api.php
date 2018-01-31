@@ -20,6 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/getEpisode', 'EpisodeController@getEpisode');
 
+Route::get('/getEpisode/{id}', 'EpisodeController@getOneEpisode');
+
 Route::get('/getProgram', 'ProgramController@getProgram');
 
 Route::get('/getProductList', 'ProductController@show_all');

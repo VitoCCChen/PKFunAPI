@@ -16,15 +16,14 @@ class ProgramController extends Controller
             'message' => "request successful"
         );
 
-        try{
-            isset($request->id)?
-                $row = DB::table('program')->select('*')->where('pgram_id', $request->id)->get():
+        try {
+            isset($request->id) ?
+                $row = DB::table('program')->select('*')->where('pgram_id', $request->id)->get() :
                 $row = DB::table('program')->select('*')->get();
 
-            $result["result"]=$row;
+            $result["result"] = $row;
             return $result;
-        }
-        catch(Exception $e) {
+        } catch (Exception $e) {
             $result['success'] = false;
             $result['message'] = $e->getMessage();
             return $result;
