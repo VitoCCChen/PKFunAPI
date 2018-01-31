@@ -17,6 +17,6 @@ class VerifyCsrfToken extends Middleware
         'api/login/facebook',
         'api/register',
         'api/contribute',
-        'api/mycard/GetAuthCode'
+        'api/mycard/getAuthCode'
     ];
 }

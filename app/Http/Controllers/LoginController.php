@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Classes\FBHelper;
+use App\Http\Requests\FbLogin;
+use App\Http\Requests\Login;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Member;
@@ -37,7 +39,7 @@ class LoginController extends Controller
 
 
 
-    public function Login(Request $request){
+    public function Login(Login $request){
         $account = $request->account;
         $pw = md5($request->password);
         if(session()->has('memberData')){
@@ -81,7 +83,7 @@ class LoginController extends Controller
 
 
 
-    public function LoginWitFb(Request $request){
+    public function LoginWitFb(FbLogin $request){
         //determine logged in already or not.
         $token = $request->accesstoken;
         if(session()->has('memberData')){
